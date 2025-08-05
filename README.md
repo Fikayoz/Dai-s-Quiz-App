@@ -1,0 +1,2 @@
+- An online quiz simulation app built from scratch
+- Shoutout to https://www.youtube.com/@GreatStackDev
