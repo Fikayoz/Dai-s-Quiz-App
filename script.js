@@ -87,6 +87,7 @@ function resetState(){
     };
 }
 
+// Logicfor choosing an answer on the page
 function selectAnswer(e){
     const selectedBtn = e.target;
     const isCorrect = selectedBtn.dataset.correct === "true";
@@ -105,5 +106,32 @@ function selectAnswer(e){
     });
     nextButton.style.display = "block";
 }
+
+function showScore(){
+    resetState();
+    questionElement.innerHTML = `You scored ${score} out of ${questions.length}!`;
+    nextButton.innerHTML = "Play Again";
+    nextButton.style.display = "block";
+}
+
+// Functionality for "Next" button on page
+function handleNextButton(){
+    currentQuestionIndex++;
+    if(currentQuestionIndex < questions.length){
+        showQuestion();
+    }
+    else {
+        showScore();
+    }
+}
+
+nextButton.addEventListener("click", ()=>{
+    if(currentQuestionIndex < questions.length){
+        handleNextButton();
+    }
+    else {
+        startQuiz();
+    }
+});
 
 startQuiz();
